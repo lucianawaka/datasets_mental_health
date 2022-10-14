@@ -1,5 +1,6 @@
 import streamlit as st
 import pickle
+import numpy as np
 
 def main():
     options = ['Homepage','Consulta','Previsão']
@@ -24,13 +25,14 @@ def consulta():
 def previsao():
     if st.button('Submeter'):
         print('Previsão dados')
-        model = pickle.load(open("model/RandomForestClassifier_v1.pkl"))
-        meus_dados = [[31,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,4,0]]
-        predict_treatment = model.predict(meus_dados)
-        predict_treatment_t = type(predict_treatment)
-        st.markdown(f"""Previsão:{predict_treatment} 
-                    Tipo: {predict_treatment_t}
-                    """)
+        model = pickle.load(open('RandomForestClassifier_v1.pkl', 'rb'))
+        print(model)
+        meus_dados = [31,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,4,0]
+        meus_dados_n = np.array(meus_dados).reshape(1, -1)
+        #predict_treatment = model.predict_proba(meus_dados_n)
+        #predict_treatment_t = type(predict_treatment)
+        #print(predict_treatment)
+        #print(predict_treatment_t)
         
 if __name__ == '__main__':
     main()
