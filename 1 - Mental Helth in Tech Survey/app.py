@@ -117,6 +117,7 @@ def previsao():
         predict_treatment = Modelo.predict(meus_dados_n).astype(int)
         dict_result = {0:'não iria',1:'iria'}
         predict_treatment_t = dict_result[predict_treatment[0]]
+        print(predict_treatment)
         st.markdown(f"""A pessoa {predict_treatment_t} submeter-se a um tratamento de saúde mental""")
         
 if __name__ == '__main__':
