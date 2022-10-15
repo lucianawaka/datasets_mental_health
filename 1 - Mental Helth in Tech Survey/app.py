@@ -55,11 +55,13 @@ def previsao():
     st.title("Previsão se a pessoa vai procurar tratamento para uma condição de saúde mental:")
     age = st.slider('Idade',14,95)
     gender = st.radio('Sexo',['Feminino','Masculino','Outro'])
-    self_employed = st.radio('Você é autônomo?',['Sim','Não'])
-    family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])
+    self_employed = st.radio('Você é autônomo?',['Sim','Não','Prefiro não informar'])
+    family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])  
     remote_work =st.radio('Do you work remotely (outside of an office) at least 50% of the time?',['Sim','Não'])
     tech_company =st.radio('Is your employer primarily a tech company/organization?',['Sim','Não'])
-    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não'])
+    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não','Não sabe informar'])
+    
+    
     care_options =st.radio('Do you know the options for mental health care your employer provides?',['Sim','Não'])
     wellness_program =st.radio('Has your employer ever discussed mental health as part of an employee wellness program?',['Sim','Não'])
     seek_help =st.radio('Does your employer provide resources to learn more about mental health issues and how to seek help?',['Sim','Não'])
@@ -76,14 +78,20 @@ def previsao():
     no_employees =st.radio('How many employees does your company or organization have?',['Sim','Não'])
     leave =st.radio('How easy is it for you to take medical leave for a mental health condition?',['Sim','Não'])
     
-   
+    dict_gender={'Feminino':0, 'Masculino':1, 'Outro':2}
+    dict_self_employed={'Sim':1, 'Não':0,'Prefiro não informar':2}
+    dict_family_history={'Sim':1,'Não':0}
+    dict_remote_work={'Sim':1,'Não':0}
+    dict_tech_company={'Sim':1,'Não':0}
+    dict_benefits={'Sim':1,'Não':0,'Não sabe informar':2}
+    
    
    
    
    
    
     meus_dados = [[
-                    age,  gender,  self_employed,  family_history, \
+                    age,  dict_gender[gender],  dict_self_employed[self_employed],  dict_family_history[family_history], \
                     remote_work,  tech_company,  benefits,  care_options,\
                     wellness_program,  seek_help, anonymity,  mental_health_consequence,\
                     physhealth_consequence,  coworkers,  supervisor, mental_health_interview,\
