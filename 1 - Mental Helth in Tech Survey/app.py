@@ -21,13 +21,13 @@ def homepage():
     st.markdown(f"""
                 #### Nosso conjunto de dados é composto da saúde mental e frequência de distúrbios de saúde mental no local de trabalho de tecnologia.
 
-                ### Pergunta a responder:
+                ### Pergunta a ser respondida:
                 A pessoa faria um tratamento para saúde mental?
                 - Quais são as características mais influentes?
-                - Neste conjunto de dados é possível responder se uma pessoa irá procurar de tratamento ou não?
+                - Neste conjunto de dados é possível responder se uma pessoa irá procurar um tratamento ou não?
 
                 #### O conjunto de dados:
-                Tamanho: 1259 linhas e 27 recursos
+                Tamanho: 1259 linhas e 27 colunas
 
                 Sim: 50.595711
                 Não: 49.404289
