@@ -59,24 +59,22 @@ def previsao():
     family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])  
     remote_work =st.radio('Do you work remotely (outside of an office) at least 50% of the time?',['Sim','Não'])
     tech_company =st.radio('Is your employer primarily a tech company/organization?',['Sim','Não'])
-    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não','Não sabe informar'])
-    
-    
-    care_options =st.radio('Do you know the options for mental health care your employer provides?',['Sim','Não'])
-    wellness_program =st.radio('Has your employer ever discussed mental health as part of an employee wellness program?',['Sim','Não'])
-    seek_help =st.radio('Does your employer provide resources to learn more about mental health issues and how to seek help?',['Sim','Não'])
-    anonymity =st.radio(' Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources?',['Sim','Não'])
-    mental_health_consequence =st.radio('Do you think that discussing a mental health issue with your employer would have negative consequences?',['Sim','Não'])
-    physhealth_consequence =st.radio('Do you think that discussing a physical health issue with your employer would have negative consequences?',['Sim','Não'])
-    coworkers =st.radio(' Would you be willing to discuss a mental health issue with your coworkers?',['Sim','Não'])
-    supervisor =st.radio('Would you be willing to discuss a mental health issue with your direct supervisor(s)?',['Sim','Não'])
-    mental_health_interview =st.radio('Would you bring up a mental health issue with a potential employer in an interview?',['Sim','Não'])
-    physhealth_interview =st.radio(' Would you bring up a physical health issue with a potential employer in an interview?',['Sim','Não'])
-    mental_vs_physical =st.radio('Do you feel that your employer takes mental health as seriously as physical health?',['Sim','Não'])
+    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não','Não sabe informar'])   
+    care_options =st.radio('Do you know the options for mental health care your employer provides?',['Sim','Não','Não sabe informar'])
+    wellness_program =st.radio('Has your employer ever discussed mental health as part of an employee wellness program?',['Sim','Não','Não sabe informar'])
+    seek_help =st.radio('Does your employer provide resources to learn more about mental health issues and how to seek help?',['Sim','Não','Não sabe informar'])
+    anonymity =st.radio(' Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources?',['Sim','Não','Não sabe informar'])
+    mental_health_consequence =st.radio('Do you think that discussing a mental health issue with your employer would have negative consequences?',['Sim','Não','Talvez'])
+    physhealth_consequence =st.radio('Do you think that discussing a physical health issue with your employer would have negative consequences?',['Sim','Não','Talvez'])  
+    coworkers =st.radio(' Would you be willing to discuss a mental health issue with your coworkers?',['Sim','Não','Alguns deles'])
+    supervisor =st.radio('Would you be willing to discuss a mental health issue with your direct supervisor(s)?',['Sim','Não','Alguns deles'])  
+    mental_health_interview =st.radio('Would you bring up a mental health issue with a potential employer in an interview?',['Sim','Não','Talvez'])
+    physhealth_interview =st.radio(' Would you bring up a physical health issue with a potential employer in an interview?',['Sim','Não','Talvez'])  
+    mental_vs_physical =st.radio('Do you feel that your employer takes mental health as seriously as physical health?',['Sim','Não','Não sabe informar'])
     obs_consequence =st.radio('Have you heard of or observed negative consequences for coworkers with mental health conditions in your workplace?',['Sim','Não'])
-    work_interfere =st.radio('If you have a mental health condition, do you feel that it interferes with your work?',['Sim','Não'])
-    no_employees =st.radio('How many employees does your company or organization have?',['Sim','Não'])
-    leave =st.radio('How easy is it for you to take medical leave for a mental health condition?',['Sim','Não'])
+    work_interfere =st.radio('If you have a mental health condition, do you feel that it interferes with your work?',['Frequentemente','Raramente', 'Nunca', 'Algumas vezes', 'Não sabe informar'])
+    no_employees =st.radio('How many employees does your company or organization have?',['1-5','6-25','26-100','100-500','500-1000','Mais que 1000'])
+    leave =st.radio('How easy is it for you to take medical leave for a mental health condition?',['Dificilmente', 'Facilmente','Um pouco fácil','Um pouco difícil','Não sabe informar'])
     
     dict_gender={'Feminino':0, 'Masculino':1, 'Outro':2}
     dict_self_employed={'Sim':1, 'Não':0,'Prefiro não informar':2}
@@ -84,19 +82,34 @@ def previsao():
     dict_remote_work={'Sim':1,'Não':0}
     dict_tech_company={'Sim':1,'Não':0}
     dict_benefits={'Sim':1,'Não':0,'Não sabe informar':2}
-    
-   
+    dict_care_options={'Sim':1,'Não':0,'Não sabe informar':2}  
+    dict_wellness_program={'Sim':1,'Não':0,'Não sabe informar':2}
+    dict_seek_help={'Sim':1,'Não':0,'Não sabe informar':2}
+    dict_anonymity={'Sim':1,'Não':0,'Não sabe informar':2}
+    dict_mental_health_consequence={'Sim':1,'Não':0,'Talvez':2}
+    dict_physhealth_consequence={'Sim':1,'Não':0,'Talvez':2}
+    dict_coworkers={'Sim':1,'Não':0,'Alguns deles':2}
+    dict_supervisor={'Sim':1,'Não':0,'Alguns deles':2}
+    dict_mental_health_interview={'Sim':1,'Não':0,'Talvez':2}
+    dict_physhealth_interview={'Sim':1,'Não':0,'Talvez':2}
+    dict_mental_vs_physical={'Sim':1,'Não':0,'Não sabe informar':2}
+    dict_obs_consequence={'Sim':1,'Não':0}
+    dict_work_interfere={'Frequentemente':0, 'Raramente':1, 'Nunca':2, 'Algumas vezes':3, 'Não sabe informar':4}
+    dict_no_employees={'1-5':0,'6-25':1,'26-100':2,'100-500':3,'500-1000':4,'Mais que 1000':5}
+    dict_leave={'Dificilmente':3, 'Facilmente':4,'Um pouco fácil':0,'Um pouco difícil':2,'Não sabe informar':1}
    
    
    
    
     meus_dados = [[
                     age,  dict_gender[gender],  dict_self_employed[self_employed],  dict_family_history[family_history], \
-                    remote_work,  tech_company,  benefits,  care_options,\
-                    wellness_program,  seek_help, anonymity,  mental_health_consequence,\
-                    physhealth_consequence,  coworkers,  supervisor, mental_health_interview,\
-                    physhealth_interview,  mental_vs_physical,  obs_consequence, \
-                    work_interfere,  no_employees,  leave]]
+                    dict_remote_work[remote_work],  dict_tech_company[tech_company],  dict_benefits[benefits], \
+                    dict_care_options[care_options], dict_wellness_program[wellness_program],  dict_seek_help[seek_help], dict_anonymity[anonymity],  \
+                    dict_mental_health_consequence[mental_health_consequence], dict_physhealth_consequence[physhealth_consequence],  dict_coworkers[coworkers],  \
+                    dict_supervisor[supervisor], dict_mental_health_interview[mental_health_interview], dict_physhealth_interview[physhealth_interview],  \
+                    dict_mental_vs_physical[mental_vs_physical],  dict_obs_consequence[obs_consequence],\
+                    dict_work_interfere[work_interfere],  dict_no_employees[no_employees],  dict_leave[leave]
+                ]]
     
     
     meus_dados_n = np.array(meus_dados).reshape(1, -1)
