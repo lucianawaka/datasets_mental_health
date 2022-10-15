@@ -50,26 +50,22 @@ def consulta():
     pass
 
 def previsao():
-    if st.button('Submeter'):
-        print('Previsão dados')
-        Modelo = joblib.load('RandomForestClassifier_v1.pkl')
+    Modelo = joblib.load('model/RandomForestClassifier_v1.pkl')
 
-        st.title("Previsão se a pessoa vai procurar tratamento para uma condição de saúde mental:")
-        age = st.slider(14,95)
-        gender = st.select_slider('Sexo',['Feminino','Masculino','Outro'])
-        self_employed = st.radio('Você é autônomo?',['Sim','Não'])
-        family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])
+    st.title("Previsão se a pessoa vai procurar tratamento para uma condição de saúde mental:")
+    age = st.slider('Idade',14,95)
+    gender = st.radio('Sexo',['Feminino','Masculino','Outro'])
+    self_employed = st.radio('Você é autônomo?',['Sim','Não'])
+    family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])
         
-        
-        meus_dados = [[age,  gender,  self_employed,  family_history,  0,  1,  1,  1,  0,  0,  1,  0,  0,  2,  1,  0,
-         0,  2,  0,  3,  3,  0]]
-        meus_dados_n = np.array(meus_dados).reshape(1, -1)
+    meus_dados = [[age,  gender,  self_employed,  family_history,  0,  1,  1,  1,  0,  0,  1,  0,  0,  2,  1,  0,
+    0,  2,  0,  3,  3,  0]]
+    meus_dados_n = np.array(meus_dados).reshape(1, -1)
 
-        predict_treatment = Modelo.predict(meus_dados_n).astype(int)
-        dict_result = {0:'Não',1:'Sim'}
-
-        predict_treatment_t = dict_result[predict_treatment[0]]
-        st.markdown(f"""{predict_treatment_t}""")
+    predict_treatment = Modelo.predict(meus_dados_n).astype(int)
+    dict_result = {0:'Não',1:'Sim'}
+    predict_treatment_t = dict_result[predict_treatment[0]]
+    st.markdown(f"""{predict_treatment_t}""")
         
 if __name__ == '__main__':
     main()
