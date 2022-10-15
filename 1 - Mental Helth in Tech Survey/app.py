@@ -110,7 +110,7 @@ def previsao():
         meus_dados_n = np.array(meus_dados).reshape(1, -1)
 
         predict_treatment = Modelo.predict(meus_dados_n).astype(int)
-        dict_result = {0:'não iria',1:'iria'}
+        dict_result = {0:'NÃO IRIA',1:'IRIA'}
         predict_treatment_t = dict_result[predict_treatment[0]]
         print(predict_treatment)
         st.markdown(f"""A pessoa {predict_treatment_t} submeter-se a um tratamento de saúde mental""")
