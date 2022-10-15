@@ -43,6 +43,7 @@ def previsao():
     Modelo = joblib.load('model/RandomForestClassifier_v1.pkl')
 
     st.title("Previsão se a pessoa iria fazer um tratamento de saúde mental:")
+    st.markdown("Responda o questionário e envie os dados para realizar a previsão.")
     age = st.slider('Idade',14,95)
     gender = st.radio('Sexo',['Feminino','Masculino','Outro'])
     self_employed = st.radio('Você é autônomo?',['Sim','Não','Prefiro não informar'])
