@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 def main():
-    options = ['Homepage','Consulta','Previsão']
+    options = ['Homepage','Previsão']
     page_option = st.sidebar.selectbox('Options', options)
     
     if page_option == 'Homepage':
