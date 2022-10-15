@@ -52,29 +52,29 @@ def consulta():
 def previsao():
     Modelo = joblib.load('model/RandomForestClassifier_v1.pkl')
 
-    st.title("Previsão se a pessoa vai procurar tratamento para uma condição de saúde mental:")
+    st.title("Previsão se a pessoa iria fazer um tratamento de saúde mental:")
     age = st.slider('Idade',14,95)
     gender = st.radio('Sexo',['Feminino','Masculino','Outro'])
     self_employed = st.radio('Você é autônomo?',['Sim','Não','Prefiro não informar'])
     family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])  
-    remote_work =st.radio('Do you work remotely (outside of an office) at least 50% of the time?',['Sim','Não'])
-    tech_company =st.radio('Is your employer primarily a tech company/organization?',['Sim','Não'])
-    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não','Não sabe informar'])   
-    care_options =st.radio('Do you know the options for mental health care your employer provides?',['Sim','Não','Não sabe informar'])
-    wellness_program =st.radio('Has your employer ever discussed mental health as part of an employee wellness program?',['Sim','Não','Não sabe informar'])
-    seek_help =st.radio('Does your employer provide resources to learn more about mental health issues and how to seek help?',['Sim','Não','Não sabe informar'])
-    anonymity =st.radio(' Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources?',['Sim','Não','Não sabe informar'])
-    mental_health_consequence =st.radio('Do you think that discussing a mental health issue with your employer would have negative consequences?',['Sim','Não','Talvez'])
-    physhealth_consequence =st.radio('Do you think that discussing a physical health issue with your employer would have negative consequences?',['Sim','Não','Talvez'])  
-    coworkers =st.radio(' Would you be willing to discuss a mental health issue with your coworkers?',['Sim','Não','Alguns deles'])
-    supervisor =st.radio('Would you be willing to discuss a mental health issue with your direct supervisor(s)?',['Sim','Não','Alguns deles'])  
-    mental_health_interview =st.radio('Would you bring up a mental health issue with a potential employer in an interview?',['Sim','Não','Talvez'])
-    physhealth_interview =st.radio(' Would you bring up a physical health issue with a potential employer in an interview?',['Sim','Não','Talvez'])  
-    mental_vs_physical =st.radio('Do you feel that your employer takes mental health as seriously as physical health?',['Sim','Não','Não sabe informar'])
-    obs_consequence =st.radio('Have you heard of or observed negative consequences for coworkers with mental health conditions in your workplace?',['Sim','Não'])
-    work_interfere =st.radio('If you have a mental health condition, do you feel that it interferes with your work?',['Frequentemente','Raramente', 'Nunca', 'Algumas vezes', 'Não sabe informar'])
-    no_employees =st.radio('How many employees does your company or organization have?',['1-5','6-25','26-100','100-500','500-1000','Mais que 1000'])
-    leave =st.radio('How easy is it for you to take medical leave for a mental health condition?',['Dificilmente', 'Facilmente','Um pouco fácil','Um pouco difícil','Não sabe informar'])
+    remote_work =st.radio('Você trabalha remotamente (fora de um escritório) pelo menos 50% do tempo?',['Sim','Não'])
+    tech_company =st.radio('Seu empregador é uma empresa/organização de tecnologia?',['Sim','Não'])
+    benefits =st.radio('Seu empregador oferece benefícios de saúde mental?',['Sim','Não','Não sabe informar'])   
+    care_options =st.radio('Você conhece as opções de cuidados de saúde mental que seu empregador oferece?',['Sim','Não','Não sabe informar'])
+    wellness_program =st.radio('Seu empregador já discutiu a saúde mental como parte de um programa de bem-estar dos funcionários?',['Sim','Não','Não sabe informar'])
+    seek_help =st.radio('Seu empregador fornece recursos para aprender mais sobre problemas de saúde mental e como procurar ajuda?',['Sim','Não','Não sabe informar'])
+    anonymity =st.radio('Seu anonimato está protegido se você optar por tirar proveito dos recursos de tratamento de saúde mental ou abuso de substâncias?',['Sim','Não','Não sabe informar'])
+    mental_health_consequence =st.radio('Você acha que discutir um problema de saúde mental com seu empregador teria consequências negativas?',['Sim','Não','Talvez'])
+    physhealth_consequence =st.radio('Você acha que discutir um problema de saúde física com seu empregador teria consequências negativas?',['Sim','Não','Talvez'])  
+    coworkers =st.radio('Você estaria disposto a discutir um problema de saúde mental com seus colegas de trabalho?',['Sim','Não','Alguns deles'])
+    supervisor =st.radio('Você estaria disposto a discutir um problema de saúde mental com seu(s) supervisor(es) direto(s)?',['Sim','Não','Alguns deles'])  
+    mental_health_interview =st.radio('Você falaria sobre um problema de saúde mental com um potencial empregador em uma entrevista?',['Sim','Não','Talvez'])
+    physhealth_interview =st.radio('Você falaria sobre um problema de saúde física com um potencial empregador em uma entrevista?',['Sim','Não','Talvez'])  
+    mental_vs_physical =st.radio('Você acha que seu empregador leva a saúde mental tão a sério quanto a saúde física?',['Sim','Não','Não sabe informar'])
+    obs_consequence =st.radio('Você já ouviu falar ou observou consequências negativas para colegas de trabalho com problemas de saúde mental em seu local de trabalho?',['Sim','Não'])
+    work_interfere =st.radio('Se você tem uma condição de saúde mental, você sente que isso interfere no seu trabalho?',['Frequentemente','Raramente', 'Nunca', 'Algumas vezes', 'Não sabe informar'])
+    no_employees =st.radio('Quantos funcionários sua empresa ou organização tem?',['1-5','6-25','26-100','100-500','500-1000','Mais que 1000'])
+    leave =st.radio('Quão fácil é para você tirar licença médica por uma condição de saúde mental?',['Dificilmente', 'Facilmente','Um pouco fácil','Um pouco difícil','Não sabe informar'])
     
     dict_gender={'Feminino':0, 'Masculino':1, 'Outro':2}
     dict_self_employed={'Sim':1, 'Não':0,'Prefiro não informar':2}
@@ -111,13 +111,13 @@ def previsao():
                     dict_work_interfere[work_interfere],  dict_no_employees[no_employees],  dict_leave[leave]
                 ]]
     
-    
-    meus_dados_n = np.array(meus_dados).reshape(1, -1)
+    if st.button("Enviar"):
+        meus_dados_n = np.array(meus_dados).reshape(1, -1)
 
-    predict_treatment = Modelo.predict(meus_dados_n).astype(int)
-    dict_result = {0:'Não',1:'Sim'}
-    predict_treatment_t = dict_result[predict_treatment[0]]
-    st.markdown(f"""{predict_treatment_t}""")
+        predict_treatment = Modelo.predict(meus_dados_n).astype(int)
+        dict_result = {0:'não iria',1:'iria'}
+        predict_treatment_t = dict_result[predict_treatment[0]]
+        st.markdown(f"""A pessoa {predict_treatment_t} submeter-se a um tratamento de saúde mental""")
         
 if __name__ == '__main__':
     main()
