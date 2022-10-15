@@ -57,9 +57,40 @@ def previsao():
     gender = st.radio('Sexo',['Feminino','Masculino','Outro'])
     self_employed = st.radio('Você é autônomo?',['Sim','Não'])
     family_history = st.radio('Você tem histórico familiar de doença mental?',['Sim','Não'])
-        
-    meus_dados = [[age,  gender,  self_employed,  family_history,  0,  1,  1,  1,  0,  0,  1,  0,  0,  2,  1,  0,
-    0,  2,  0,  3,  3,  0]]
+    remote_work =st.radio('Do you work remotely (outside of an office) at least 50% of the time?',['Sim','Não'])
+    tech_company =st.radio('Is your employer primarily a tech company/organization?',['Sim','Não'])
+    benefits =st.radio('Does your employer provide mental health benefits?',['Sim','Não'])
+    care_options =st.radio('Do you know the options for mental health care your employer provides?',['Sim','Não'])
+    wellness_program =st.radio('Has your employer ever discussed mental health as part of an employee wellness program?',['Sim','Não'])
+    seek_help =st.radio('Does your employer provide resources to learn more about mental health issues and how to seek help?',['Sim','Não'])
+    anonymity =st.radio(' Is your anonymity protected if you choose to take advantage of mental health or substance abuse treatment resources?',['Sim','Não'])
+    mental_health_consequence =st.radio('Do you think that discussing a mental health issue with your employer would have negative consequences?',['Sim','Não'])
+    physhealth_consequence =st.radio('Do you think that discussing a physical health issue with your employer would have negative consequences?',['Sim','Não'])
+    coworkers =st.radio(' Would you be willing to discuss a mental health issue with your coworkers?',['Sim','Não'])
+    supervisor =st.radio('Would you be willing to discuss a mental health issue with your direct supervisor(s)?',['Sim','Não'])
+    mental_health_interview =st.radio('Would you bring up a mental health issue with a potential employer in an interview?',['Sim','Não'])
+    physhealth_interview =st.radio(' Would you bring up a physical health issue with a potential employer in an interview?',['Sim','Não'])
+    mental_vs_physical =st.radio('Do you feel that your employer takes mental health as seriously as physical health?',['Sim','Não'])
+    obs_consequence =st.radio('Have you heard of or observed negative consequences for coworkers with mental health conditions in your workplace?',['Sim','Não'])
+    work_interfere =st.radio('If you have a mental health condition, do you feel that it interferes with your work?',['Sim','Não'])
+    no_employees =st.radio('How many employees does your company or organization have?',['Sim','Não'])
+    leave =st.radio('How easy is it for you to take medical leave for a mental health condition?',['Sim','Não'])
+    
+   
+   
+   
+   
+   
+   
+    meus_dados = [[
+                    age,  gender,  self_employed,  family_history, \
+                    remote_work,  tech_company,  benefits,  care_options,\
+                    wellness_program,  seek_help, anonymity,  mental_health_consequence,\
+                    physhealth_consequence,  coworkers,  supervisor, mental_health_interview,\
+                    physhealth_interview,  mental_vs_physical,  obs_consequence, \
+                    work_interfere,  no_employees,  leave]]
+    
+    
     meus_dados_n = np.array(meus_dados).reshape(1, -1)
 
     predict_treatment = Modelo.predict(meus_dados_n).astype(int)
