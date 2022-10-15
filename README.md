@@ -6,3 +6,4 @@
 1 - Mental Helth in Tech Survey
 #### Subir o container
 sudo docker-compose -f docker-compose.yml up  -d --build --force-recreate --no-deps
+#### Versão 1.0 15/10/2022
