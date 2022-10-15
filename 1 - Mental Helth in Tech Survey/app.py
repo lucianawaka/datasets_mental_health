@@ -9,8 +9,6 @@ def main():
     
     if page_option == 'Homepage':
         homepage()
-    elif page_option == 'Consulta':
-        consulta()
     elif page_option == 'Previsão':
         previsao()
 
@@ -40,10 +38,7 @@ def homepage():
                 Versão 1.0 - 15/12/2022          
                 
                 """)
-
-def consulta():
-    pass
-
+    
 def previsao():
     Modelo = joblib.load('model/RandomForestClassifier_v1.pkl')
 
